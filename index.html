@@ -2,105 +2,350 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DOSSIER 0920</title>
+<title>DOSSIER 0920</title>
 
-  <style>
-    body {
-      background: #111;
-      color: #e8e1cf;
-      font-family: "Courier New", monospace;
-      text-align: center;
-      padding: 40px 20px;
-    }
+<style>
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      border: 1px solid #777;
-      padding: 40px;
-      background: #191919;
-    }
+body {
+    background-color: #111;
+    color: #e7dfcc;
+    font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 25px;
+}
 
-    h1 {
-      letter-spacing: 5px;
-      font-size: 36px;
-      margin-bottom: 5px;
-    }
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: #181818;
+    border: 1px solid #777;
+    padding: 35px;
+    box-shadow: 0 0 25px black;
+}
 
-    h2 {
-      font-weight: normal;
-      font-size: 17px;
-      color: #aaa;
-    }
+h1 {
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+}
 
-    .classified {
-      display: inline-block;
-      border: 3px solid #9c1c1c;
-      color: #c22929;
-      padding: 7px 15px;
-      margin: 25px;
-      font-weight: bold;
-      transform: rotate(-3deg);
-    }
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 20px;
+}
 
-    .menu-button {
-      display: block;
-      width: 80%;
-      max-width: 400px;
-      margin: 18px auto;
-      padding: 17px;
-      background: #262626;
-      border: 1px solid #aaa;
-      color: white;
-      text-decoration: none;
-      font-family: "Courier New", monospace;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.classified {
+    width: fit-content;
+    margin: 20px auto;
+    padding: 7px 15px;
+    border: 3px solid #9e2424;
+    color: #c53636;
+    font-weight: bold;
+    transform: rotate(-3deg);
+}
 
-    .menu-button:hover {
-      background: #333;
-    }
+.menu-button {
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    padding: 16px;
+    background: #262626;
+    border: 1px solid #aaa;
+    color: white;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+    font-size: 16px;
+}
 
-    .footer {
-      margin-top: 35px;
-      color: #777;
-      font-size: 12px;
-    }
-  </style>
+.menu-button:hover {
+    background: #353535;
+}
+
+.section {
+    display: none;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #555;
+}
+
+input {
+    width: 90%;
+    padding: 14px;
+    margin: 12px 0;
+    background: #0e0e0e;
+    border: 1px solid #777;
+    color: white;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+}
+
+.search-button {
+    padding: 12px 25px;
+    background: #333;
+    color: white;
+    border: 1px solid #aaa;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 25px;
+    text-align: left;
+    line-height: 1.6;
+    border-left: 4px solid #8c2323;
+    padding: 15px;
+    background: #101010;
+    display: none;
+}
+
+.alert {
+    color: #d34a4a;
+    font-weight: bold;
+}
+
+.record-title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.back {
+    margin-top: 25px;
+    color: #aaa;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.footer {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>DOSSIER 0920</h1>
+<h1>DOSSIER 0920</h1>
 
-    <h2>SECURE RECORDS SYSTEM</h2>
+<div class="subtitle">
+SECURE RECORDS SYSTEM
+</div>
 
-    <div class="classified">
-      CLASSIFIED
-    </div>
+<div class="classified">
+CLASSIFIED
+</div>
 
-    <p>AUTHORIZED PERSONNEL ONLY</p>
+<div id="mainMenu">
 
-    <button class="menu-button">
-      HOTEL GUEST REGISTRY
-    </button>
+<p style="text-align:center">
+AUTHORIZED PERSONNEL ONLY
+</p>
 
-    <button class="menu-button">
-      HISTORICAL INTELLIGENCE ARCHIVES
-    </button>
+<button class="menu-button" onclick="openHotel()">
+HOTEL GUEST REGISTRY
+</button>
 
-    <div class="footer">
-      PARIS FIELD OPERATIONS<br>
-      SECURITY LEVEL 7
-    </div>
+<button class="menu-button">
+HISTORICAL INTELLIGENCE ARCHIVES
+</button>
 
-  </div>
+</div>
+
+
+<div id="hotelSection" class="section">
+
+<h2>HOTEL GUEST REGISTRY</h2>
+
+<p>
+Search archived guest records by room number.
+</p>
+
+<input
+type="text"
+id="roomNumber"
+placeholder="ENTER ROOM NUMBER">
+
+<br>
+
+<button
+class="search-button"
+onclick="searchHotel()">
+SEARCH RECORDS
+</button>
+
+<div id="hotelResult" class="result"></div>
+
+<div class="back" onclick="goBack()">
+← RETURN TO SECURE RECORDS
+</div>
+
+</div>
+
+
+<div class="footer">
+PARIS FIELD OPERATIONS<br>
+SECURITY LEVEL 7
+</div>
+
+</div>
+
+
+<script>
+
+function openHotel() {
+
+    document.getElementById("mainMenu").style.display = "none";
+
+    document.getElementById("hotelSection").style.display = "block";
+
+}
+
+
+function goBack() {
+
+    document.getElementById("mainMenu").style.display = "block";
+
+    document.getElementById("hotelSection").style.display = "none";
+
+    document.getElementById("hotelResult").style.display = "none";
+
+    document.getElementById("roomNumber").value = "";
+
+}
+
+
+function searchHotel() {
+
+    let room =
+    document.getElementById("roomNumber").value.trim();
+
+    let result =
+    document.getElementById("hotelResult");
+
+    result.style.display = "block";
+
+
+    if (room === "614") {
+
+        result.innerHTML = `
+
+        <div class="alert">
+        SECURITY FLAG — RECORD RESTRICTED
+        </div>
+
+        <br>
+
+        <div class="record-title">
+        ROOM 614
+        </div>
+
+        <br>
+
+        <strong>DATE:</strong>
+        September 17, 1964
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Émile Laurent
+
+        <br><br>
+
+        <strong>INTERNAL SECURITY NOTE:</strong>
+
+        <br>
+
+        Identification presented at check-in
+        does not match previous hotel records.
+
+        <br><br>
+
+        Passport number appears under
+        a second identity.
+
+        <br><br>
+
+        <span class="alert">
+        ASSOCIATED RECORD FLAGGED FOR REVIEW.
+        </span>
+
+        `;
+
+    }
+
+    else if (room === "613") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 613
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Margaret Bell
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        London, England
+
+        <br>
+
+        <strong>STATUS:</strong>
+        No security flags.
+
+        `;
+
+    }
+
+    else if (room === "615") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 615
+        </div>
+
+        <br>
+
+        <strong>STATUS:</strong>
+        VACANT
+
+        `;
+
+    }
+
+    else {
+
+        result.innerHTML = `
+
+        <span class="alert">
+        NO MATCHING RECORD FOUND
+        </span>
+
+        <br><br>
+
+        Verify the room number
+        and search again.
+
+        `;
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
