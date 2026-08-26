@@ -234,73 +234,203 @@ function searchHotel() {
     result.style.display = "block";
 
 
-    if (room === "614") {
+    // IMPORTANT STORY ROOM
+    if (room === "323") {
 
         result.innerHTML = `
 
         <div class="alert">
-        SECURITY FLAG — RECORD RESTRICTED
+        SECURITY REVIEW — FLAGGED RECORD
         </div>
 
         <br>
 
         <div class="record-title">
-        ROOM 614
+        ROOM 323
         </div>
 
         <br>
 
-        <strong>DATE:</strong>
-        September 17, 1964
-
-        <br>
-
         <strong>REGISTERED GUEST:</strong>
-        Émile Laurent
-
-        <br><br>
-
-        <strong>INTERNAL SECURITY NOTE:</strong>
+        V. Beaumont
 
         <br>
 
-        Identification presented at check-in
-        does not match previous hotel records.
+        <strong>RESIDENCE:</strong>
+        Paris, France
 
         <br><br>
 
-        Passport number appears under
-        a second identity.
+        <strong>VISITOR LOG:</strong>
+
+        <br>
+
+        Sergei Antonov
+
+        <br>
+
+        Arrival: 10:14 PM
+
+        <br>
+
+        Departure: 11:06 PM
+
+        <br><br>
+
+        Visitor admitted at guest's request.
+
+        <br><br>
+
+        <strong>INTERNAL NOTE:</strong>
+
+        <br>
+
+        Guest requested that no telephone calls
+        be connected to the room during the visit.
+
+        <br><br>
+
+        Visitor entry was recorded manually
+        by the night desk.
 
         <br><br>
 
         <span class="alert">
-        ASSOCIATED RECORD FLAGGED FOR REVIEW.
+        ASSOCIATED VISITOR LATER FLAGGED
+        IN INTELLIGENCE RECORDS.
         </span>
 
         `;
 
     }
 
-    else if (room === "613") {
+
+    // DOSSIER 0920 EASTER EGG
+    else if (room === "920") {
 
         result.innerHTML = `
 
         <div class="record-title">
-        ROOM 613
+        ROOM 920
         </div>
 
         <br>
 
         <strong>REGISTERED GUEST:</strong>
-        Margaret Bell
+        C. Dorsey
+
+        <br>
+
+        <strong>STATUS:</strong>
+        VIP GUEST
+
+        <br><br>
+
+        <strong>INTERNAL NOTE:</strong>
+
+        <br>
+
+        Special authorization granted.
+
+        <br><br>
+
+        Clearance level:
+        <strong>7</strong>
+
+        <br><br>
+
+        <span class="alert">
+        LICENSED FOR LEVEL 7 ACCESS
+        </span>
+
+        `;
+
+    }
+
+
+    // SECRET 092 EASTER EGG
+    else if (room === "092") {
+
+        result.innerHTML = `
+
+        <div class="alert">
+        ARCHIVE ANOMALY DETECTED
+        </div>
+
+        <br>
+
+        <div class="record-title">
+        ROOM 092
+        </div>
+
+        <br>
+
+        Room number not recognized
+        as a valid guest room.
+
+        <br><br>
+
+        <strong>CROSS-REFERENCE:</strong>
+        DOSSIER 0920
+
+        <br>
+
+        <strong>REQUIRED CLEARANCE:</strong>
+        AGENT 007
+
+        <br><br>
+
+        <span class="alert">
+        FURTHER INFORMATION CLASSIFIED
+        </span>
+
+        `;
+
+    }
+
+
+    // NORMAL HOTEL RECORD
+    else if (room === "602") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 602
+        </div>
+
+        <br>
+
+        <strong>STATUS:</strong>
+        VACANT
+
+        <br><br>
+
+        Room held for maintenance.
+
+        `;
+
+    }
+
+
+    else if (room === "605") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 605
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Claire Duvall
 
         <br>
 
         <strong>RESIDENCE:</strong>
-        London, England
+        Lyon, France
 
-        <br>
+        <br><br>
 
         <strong>STATUS:</strong>
         No security flags.
@@ -309,12 +439,102 @@ function searchHotel() {
 
     }
 
-    else if (room === "615") {
+
+    else if (room === "607") {
 
         result.innerHTML = `
 
         <div class="record-title">
-        ROOM 615
+        ROOM 607
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Henry Whitmore
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        London, England
+
+        <br><br>
+
+        Guest requested early departure
+        at 6:15 AM.
+
+        <br><br>
+
+        <strong>STATUS:</strong>
+        No security flags.
+
+        `;
+
+    }
+
+
+    else if (room === "609") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 609
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Paul Fournier
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        Marseille, France
+
+        <br><br>
+
+        <strong>STATUS:</strong>
+        Reservation canceled prior to arrival.
+
+        `;
+
+    }
+
+
+    // SMALL RED HERRING
+    else if (room === "611") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 611
+        </div>
+
+        <br>
+
+        <strong>ARCHIVE STATUS:</strong>
+        INCOMPLETE
+
+        <br><br>
+
+        Passport photocopy missing
+        from archived registration materials.
+
+        <br><br>
+
+        No additional irregularities recorded.
+
+        `;
+
+    }
+
+
+    else if (room === "616") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 616
         </div>
 
         <br>
@@ -326,12 +546,158 @@ function searchHotel() {
 
     }
 
+
+    // SPY-SOUNDING RED HERRING
+    else if (room === "618") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 618
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Jacques Moreau
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        Nice, France
+
+        <br><br>
+
+        <strong>GUEST REQUEST:</strong>
+
+        <br>
+
+        No telephone calls were to be
+        connected directly to the room.
+
+        <br><br>
+
+        <strong>STATUS:</strong>
+        No security flags.
+
+        `;
+
+    }
+
+
+    else if (room === "621") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 621
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        Elizabeth Harcourt
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        New York, USA
+
+        <br><br>
+
+        <strong>STATUS:</strong>
+        No security flags.
+
+        `;
+
+    }
+
+
+    else if (room === "624") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 624
+        </div>
+
+        <br>
+
+        <strong>ARCHIVE STATUS:</strong>
+
+        <br>
+
+        RECORD UNAVAILABLE
+
+        <br><br>
+
+        Original registration materials
+        damaged during archival transfer.
+
+        `;
+
+    }
+
+
+    // ANOTHER RED HERRING
+    else if (room === "627") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 627
+        </div>
+
+        <br>
+
+        <strong>REGISTERED GUEST:</strong>
+        André Laurent
+
+        <br>
+
+        <strong>RESIDENCE:</strong>
+        Geneva, Switzerland
+
+        <br><br>
+
+        Guest settled entire account
+        in cash at departure.
+
+        <br><br>
+
+        <strong>STATUS:</strong>
+        No security flags.
+
+        `;
+
+    }
+
+
+    else if (room === "631") {
+
+        result.innerHTML = `
+
+        <div class="record-title">
+        ROOM 631
+        </div>
+
+        <br>
+
+        <strong>STATUS:</strong>
+        VACANT
+
+        `;
+
+    }
+
+
+    // ANY OTHER NUMBER
     else {
 
         result.innerHTML = `
 
         <span class="alert">
-        NO MATCHING RECORD FOUND
+        NO MATCHING ARCHIVED RECORD FOUND
         </span>
 
         <br><br>
