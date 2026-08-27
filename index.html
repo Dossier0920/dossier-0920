@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-    max-width: 700px;
+    max-width: 760px;
     margin: auto;
     background: #181818;
     border: 1px solid #777;
@@ -92,12 +92,16 @@ input {
     cursor: pointer;
 }
 
+.search-button:hover {
+    background: #444;
+}
+
 .result {
     margin-top: 25px;
     text-align: left;
     line-height: 1.6;
     border-left: 4px solid #8c2323;
-    padding: 15px;
+    padding: 18px;
     background: #101010;
     display: none;
 }
@@ -110,6 +114,80 @@ input {
 .record-title {
     color: white;
     font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.field-label {
+    color: #aaa;
+    font-weight: bold;
+}
+
+.divider {
+    border-top: 1px solid #555;
+    margin: 22px 0;
+}
+
+.notes-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #252525;
+    border: 1px solid #999;
+    color: white;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+.notes-button:hover {
+    background: #383838;
+}
+
+.analyst-notes {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background: #d8d2c1;
+    color: #181818;
+    border: 1px solid #777;
+    line-height: 1.7;
+}
+
+.note-heading {
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 2px solid #222;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.redacted-line {
+    display: inline-block;
+    background: #111;
+    color: #111;
+    padding: 1px 7px;
+    letter-spacing: 3px;
+    margin: 2px 0;
+}
+
+.government-notice {
+    margin-top: 25px;
+    padding: 18px;
+    border: 3px solid #8c2323;
+    background: #161616;
+}
+
+.notice-title {
+    color: #d34a4a;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.status-restricted {
+    display: inline-block;
+    color: #d34a4a;
+    border: 1px solid #d34a4a;
+    padding: 3px 8px;
     font-weight: bold;
 }
 
@@ -144,6 +222,9 @@ SECURE RECORDS SYSTEM
 CLASSIFIED
 </div>
 
+
+<!-- MAIN MENU -->
+
 <div id="mainMenu">
 
 <p style="text-align:center">
@@ -158,8 +239,14 @@ HOTEL GUEST REGISTRY
 HISTORICAL INTELLIGENCE ARCHIVES
 </button>
 
+<button class="menu-button" onclick="openLab()">
+LABORATORY ANALYSIS DATABASE
+</button>
+
 </div>
 
+
+<!-- HOTEL SECTION -->
 
 <div id="hotelSection" class="section">
 
@@ -191,6 +278,38 @@ SEARCH RECORDS
 </div>
 
 
+<!-- LAB SECTION -->
+
+<div id="labSection" class="section">
+
+<h2>LABORATORY ANALYSIS DATABASE</h2>
+
+<p>
+Search Central Laboratory records by sample reference number.
+</p>
+
+<input
+type="text"
+id="sampleNumber"
+placeholder="ENTER SAMPLE REFERENCE">
+
+<br>
+
+<button
+class="search-button"
+onclick="searchLab()">
+SEARCH LAB RECORDS
+</button>
+
+<div id="labResult" class="result"></div>
+
+<div class="back" onclick="goBack()">
+← RETURN TO SECURE RECORDS
+</div>
+
+</div>
+
+
 <div class="footer">
 PARIS FIELD OPERATIONS<br>
 SECURITY LEVEL 7
@@ -201,11 +320,25 @@ SECURITY LEVEL 7
 
 <script>
 
+
+// --------------------
+// NAVIGATION
+// --------------------
+
 function openHotel() {
 
     document.getElementById("mainMenu").style.display = "none";
-
     document.getElementById("hotelSection").style.display = "block";
+    document.getElementById("labSection").style.display = "none";
+
+}
+
+
+function openLab() {
+
+    document.getElementById("mainMenu").style.display = "none";
+    document.getElementById("hotelSection").style.display = "none";
+    document.getElementById("labSection").style.display = "block";
 
 }
 
@@ -215,13 +348,21 @@ function goBack() {
     document.getElementById("mainMenu").style.display = "block";
 
     document.getElementById("hotelSection").style.display = "none";
+    document.getElementById("labSection").style.display = "none";
 
     document.getElementById("hotelResult").style.display = "none";
+    document.getElementById("labResult").style.display = "none";
 
     document.getElementById("roomNumber").value = "";
+    document.getElementById("sampleNumber").value = "";
 
 }
 
+
+
+// --------------------
+// HOTEL DATABASE
+// --------------------
 
 function searchHotel() {
 
@@ -234,7 +375,6 @@ function searchHotel() {
     result.style.display = "block";
 
 
-    // IMPORTANT STORY ROOM
     if (room === "323") {
 
         result.innerHTML = `
@@ -305,7 +445,6 @@ function searchHotel() {
     }
 
 
-    // DOSSIER 0920 EASTER EGG
     else if (room === "920") {
 
         result.innerHTML = `
@@ -348,7 +487,6 @@ function searchHotel() {
     }
 
 
-    // SECRET 092 EASTER EGG
     else if (room === "092") {
 
         result.innerHTML = `
@@ -389,7 +527,6 @@ function searchHotel() {
     }
 
 
-    // NORMAL HOTEL RECORD
     else if (room === "602") {
 
         result.innerHTML = `
@@ -501,7 +638,6 @@ function searchHotel() {
     }
 
 
-    // SMALL RED HERRING
     else if (room === "611") {
 
         result.innerHTML = `
@@ -547,7 +683,6 @@ function searchHotel() {
     }
 
 
-    // SPY-SOUNDING RED HERRING
     else if (room === "618") {
 
         result.innerHTML = `
@@ -639,7 +774,6 @@ function searchHotel() {
     }
 
 
-    // ANOTHER RED HERRING
     else if (room === "627") {
 
         result.innerHTML = `
@@ -691,7 +825,6 @@ function searchHotel() {
     }
 
 
-    // ANY OTHER NUMBER
     else {
 
         result.innerHTML = `
@@ -706,6 +839,319 @@ function searchHotel() {
         and search again.
 
         `;
+
+    }
+
+}
+
+
+
+// --------------------
+// LAB DATABASE
+// --------------------
+
+function searchLab() {
+
+    let sample =
+    document.getElementById("sampleNumber").value.trim();
+
+    let result =
+    document.getElementById("labResult");
+
+    result.style.display = "block";
+
+
+    if (sample === "731") {
+
+        result.innerHTML = `
+
+        <div class="alert">
+        RESTRICTED LABORATORY RECORD
+        </div>
+
+        <br>
+
+        <div class="record-title">
+        SAMPLE 731
+        </div>
+
+        <br>
+
+        <span class="field-label">OBJECT:</span>
+        La Joconde (Mona Lisa)
+
+        <br>
+
+        <span class="field-label">SAMPLE TYPE:</span>
+        Paint Fragment
+
+        <br>
+
+        <span class="field-label">ANALYST:</span>
+        Daniel Mercer
+
+        <br>
+
+        <span class="field-label">COLLECTION AUTHORIZATION:</span>
+        <span class="alert">NOT ON FILE</span>
+
+        <br>
+
+        <span class="field-label">CHAIN OF CUSTODY:</span>
+        INCOMPLETE
+
+        <br>
+
+        <span class="field-label">CURRENT STATUS:</span>
+        <span class="status-restricted">RESTRICTED</span>
+
+        <div class="divider"></div>
+
+        <strong>PRELIMINARY FINDINGS</strong>
+
+        <br><br>
+
+        Pigment composition is broadly consistent
+        with historic materials associated with
+        Renaissance-era paintings.
+
+        <br><br>
+
+        Microscopic examination revealed an underlying
+        preparation layer that does not match the Louvre's
+        archived conservation profile for La Joconde.
+
+        <br><br>
+
+        <span class="alert">
+        COMPARATIVE ANOMALY DETECTED
+        </span>
+
+        <br><br>
+
+        Additional testing recommended.
+
+        <br><br>
+
+        Authenticity cannot be confirmed
+        from this sample alone.
+
+        <div class="divider"></div>
+
+        <strong>SAMPLE ORIGIN:</strong>
+
+        <br><br>
+
+        Sample 731 does not appear on the authorized
+        conservation collection schedule.
+
+        <br><br>
+
+        Original collection authorization
+        could not be located.
+
+        <br>
+
+        <button class="notes-button"
+        onclick="showLabNotes()">
+        VIEW ANALYST NOTES
+        </button>
+
+
+        <div id="analystNotes" class="analyst-notes">
+
+            <div class="note-heading">
+            ANALYST NOTES — D. MERCER
+            </div>
+
+            Sample 731 was not listed on the
+            authorized conservation schedule.
+
+            <br><br>
+
+            The fragment was delivered separately
+            from the standard laboratory chain
+            of custody.
+
+            <br><br>
+
+            Initial microscopy suggests the lower
+            preparation layer is materially inconsistent
+            with the Louvre reference samples currently
+            held on file.
+
+            <br><br>
+
+            I requested access to earlier conservation
+            photography and cross-section records.
+
+            <br><br>
+
+            <span class="redacted-line">
+            REDACTED REDACTED REDACTED
+            </span>
+
+            <br>
+
+            <span class="redacted-line">
+            REDACTED REDACTED REDACTED REDACTED
+            </span>
+
+            <br><br>
+
+            Comparison with prior imaging indicates
+
+            <span class="redacted-line">
+            REDACTED REDACTED
+            </span>
+
+            replacement may have occurred before
+
+            <span class="redacted-line">
+            REDACTED REDACTED
+            </span>
+
+            .
+
+            <br><br>
+
+            On August 14, I was instructed not
+            to repeat the comparison and not to
+            circulate preliminary findings outside
+            the laboratory.
+
+            <br><br>
+
+            <span class="redacted-line">
+            REDACTED REDACTED REDACTED
+            </span>
+
+            <br><br>
+
+            Instruction specifically states:
+
+            <br><br>
+
+            <strong>
+            DO NOT TRANSMIT TO AMERICAN LIAISON.
+            </strong>
+
+            <br><br>
+
+            I asked who authorized the restriction.
+
+            <br><br>
+
+            No name was provided.
+
+            <br><br>
+
+            The sample has since been reclassified
+            from CONSERVATION MATERIAL to
+            RESTRICTED STATE RECORD.
+
+            <br><br>
+
+            I do not understand why a museum
+            paint sample is being handled
+            as an intelligence matter.
+
+
+            <div class="government-notice">
+
+                <div class="notice-title">
+                FRENCH GOVERNMENT ACCESS CONTROL NOTICE
+                </div>
+
+                <br>
+
+                All records associated with Sample 731
+                have been placed under restricted
+                circulation by government directive.
+
+                <br><br>
+
+                Unauthorized disclosure is prohibited.
+
+                <br><br>
+
+                <strong>REASON FOR RESTRICTION:</strong>
+
+                <br>
+
+                <span class="redacted-line">
+                REDACTED REDACTED REDACTED
+                </span>
+
+                <br><br>
+
+                <strong>AUTHORIZING OFFICE:</strong>
+
+                <br>
+
+                <span class="redacted-line">
+                REDACTED REDACTED
+                </span>
+
+                <br><br>
+
+                <strong>DISTRIBUTION:</strong>
+                LIMITED
+
+                <br>
+
+                <strong>EXTERNAL RELEASE:</strong>
+                DENIED
+
+            </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else {
+
+        result.innerHTML = `
+
+        <span class="alert">
+        NO MATCHING LABORATORY RECORD FOUND
+        </span>
+
+        <br><br>
+
+        Verify the sample reference
+        and search again.
+
+        `;
+
+    }
+
+}
+
+
+
+function showLabNotes() {
+
+    let notes =
+    document.getElementById("analystNotes");
+
+    let button =
+    event.target;
+
+    if (notes.style.display === "block") {
+
+        notes.style.display = "none";
+        button.innerHTML = "VIEW ANALYST NOTES";
+
+    }
+
+    else {
+
+        notes.style.display = "block";
+        button.innerHTML = "CLOSE ANALYST NOTES";
 
     }
 
