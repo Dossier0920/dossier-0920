@@ -58,12 +58,12 @@ body{background:#111;color:#e7dfcc;font-family:"Courier New",monospace;margin:0;
 </div>
 
 <div class="tab-bar">
-<button id="guestTabButton" class="tab-button active" onclick="showBallTab('guestListTab',this)">GUEST LIST</button>
-<button class="tab-button" onclick="showBallTab('directiveTab',this)">OPERATIONAL DIRECTIVE</button>
+<button id="directiveTabButton" class="tab-button active" onclick="showBallTab('directiveTab',this)">OPERATIONAL DIRECTIVE</button>
+<button class="tab-button" onclick="showBallTab('guestListTab',this)">GUEST LIST</button>
 <button class="tab-button" onclick="showBallTab('surveillanceTab',this)">SURVEILLANCE GALLERY</button>
 </div>
 
-<div id="guestListTab" class="ball-tab active">
+<div id="guestListTab" class="ball-tab">
 <h3>SECURE DIGITAL GUEST REGISTRY</h3>
 <p>Search confirmed admissions, sponsor credentials, and event records.</p>
 <input class="guest-search" type="text" id="guestSearch" placeholder="SEARCH NAME, AFFILIATION, STATUS, OR NOTE" oninput="filterGuests()">
@@ -101,7 +101,7 @@ body{background:#111;color:#e7dfcc;font-family:"Courier New",monospace;margin:0;
 </div>
 </div>
 
-<div id="directiveTab" class="ball-tab">
+<div id="directiveTab" class="ball-tab active">
 <div class="directive-card">
 <h3>OPEN INVESTIGATION — PALAIS GARNIER</h3>
 <h4>OPERATIONAL DIRECTIVE</h4>
@@ -131,7 +131,7 @@ body{background:#111;color:#e7dfcc;font-family:"Courier New",monospace;margin:0;
 </div>
 <div class="surveillance-card">
 <img src="masquerade-cam07.png" alt="CAM 07 surveillance image showing possible handoff" onclick="openImageModal(this.src)">
-<div class="surveillance-caption"><strong>CAM 07 — POSSIBLE HANDOFF</strong><br>Masked male observed exchanging an envelope or card with an unidentified masked woman. Positive identification not confirmed.</div>
+<div class="surveillance-caption"><strong>CAM 07 — POSSIBLE HANDOFF</strong><br>Masked male observed exchanging an envelope or card with C. Renard</div>
 </div>
 </div>
 </div>
