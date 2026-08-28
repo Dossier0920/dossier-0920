@@ -1,1163 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DOSSIER 0920</title>
-
 <style>
-
-body {
-    background-color: #111;
-    color: #e7dfcc;
-    font-family: "Courier New", monospace;
-    margin: 0;
-    padding: 25px;
-}
-
-.container {
-    max-width: 760px;
-    margin: auto;
-    background: #181818;
-    border: 1px solid #777;
-    padding: 35px;
-    box-shadow: 0 0 25px black;
-}
-
-h1 {
-    text-align: center;
-    letter-spacing: 5px;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-.classified {
-    width: fit-content;
-    margin: 20px auto;
-    padding: 7px 15px;
-    border: 3px solid #9e2424;
-    color: #c53636;
-    font-weight: bold;
-    transform: rotate(-3deg);
-}
-
-.menu-button {
-    display: block;
-    width: 90%;
-    margin: 15px auto;
-    padding: 16px;
-    background: #262626;
-    border: 1px solid #aaa;
-    color: white;
-    font-family: "Courier New", monospace;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.menu-button:hover {
-    background: #353535;
-}
-
-.section {
-    display: none;
-    margin-top: 30px;
-    padding-top: 25px;
-    border-top: 1px solid #555;
-}
-
-input {
-    width: 90%;
-    padding: 14px;
-    margin: 12px 0;
-    background: #0e0e0e;
-    border: 1px solid #777;
-    color: white;
-    font-family: "Courier New", monospace;
-    font-size: 18px;
-}
-
-.search-button {
-    padding: 12px 25px;
-    background: #333;
-    color: white;
-    border: 1px solid #aaa;
-    font-family: "Courier New", monospace;
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background: #444;
-}
-
-.result {
-    margin-top: 25px;
-    text-align: left;
-    line-height: 1.6;
-    border-left: 4px solid #8c2323;
-    padding: 18px;
-    background: #101010;
-    display: none;
-}
-
-.alert {
-    color: #d34a4a;
-    font-weight: bold;
-}
-
-.record-title {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.field-label {
-    color: #aaa;
-    font-weight: bold;
-}
-
-.divider {
-    border-top: 1px solid #555;
-    margin: 22px 0;
-}
-
-.notes-button {
-    margin-top: 20px;
-    padding: 12px 20px;
-    background: #252525;
-    border: 1px solid #999;
-    color: white;
-    font-family: "Courier New", monospace;
-    cursor: pointer;
-}
-
-.notes-button:hover {
-    background: #383838;
-}
-
-.analyst-notes {
-    display: none;
-    margin-top: 25px;
-    padding: 20px;
-    background: #d8d2c1;
-    color: #181818;
-    border: 1px solid #777;
-    line-height: 1.7;
-}
-
-.note-heading {
-    font-weight: bold;
-    font-size: 18px;
-    border-bottom: 2px solid #222;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-}
-
-.redacted-line {
-    display: inline-block;
-    background: #111;
-    color: #111;
-    padding: 1px 7px;
-    letter-spacing: 3px;
-    margin: 2px 0;
-}
-
-.government-notice {
-    margin-top: 25px;
-    padding: 18px;
-    border: 3px solid #8c2323;
-    background: #161616;
-}
-
-.notice-title {
-    color: #d34a4a;
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-.status-restricted {
-    display: inline-block;
-    color: #d34a4a;
-    border: 1px solid #d34a4a;
-    padding: 3px 8px;
-    font-weight: bold;
-}
-
-.back {
-    margin-top: 25px;
-    color: #aaa;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.footer {
-    text-align: center;
-    color: #666;
-    font-size: 12px;
-    margin-top: 40px;
-}
-
+body{background:#111;color:#e7dfcc;font-family:"Courier New",monospace;margin:0;padding:25px}.container{max-width:900px;margin:auto;background:#181818;border:1px solid #777;padding:35px;box-shadow:0 0 25px #000}h1{text-align:center;letter-spacing:5px;margin-bottom:5px}.subtitle{text-align:center;color:#aaa;margin-bottom:20px}.classified{width:fit-content;margin:20px auto;padding:7px 15px;border:3px solid #9e2424;color:#c53636;font-weight:bold;transform:rotate(-3deg)}.menu-button{display:block;width:90%;margin:15px auto;padding:16px;background:#262626;border:1px solid #aaa;color:#fff;font-family:"Courier New",monospace;cursor:pointer;font-size:16px}.menu-button:hover,.search-button:hover,.notes-button:hover,.tab-button:hover{background:#444}.locked-label{color:#d34a4a;font-size:12px;margin-left:8px}.section{display:none;margin-top:30px;padding-top:25px;border-top:1px solid #555}input{width:90%;box-sizing:border-box;padding:14px;margin:12px 0;background:#0e0e0e;border:1px solid #777;color:#fff;font-family:"Courier New",monospace;font-size:18px}.search-button,.notes-button{padding:12px 25px;background:#333;color:#fff;border:1px solid #aaa;font-family:"Courier New",monospace;cursor:pointer}.result{margin-top:25px;text-align:left;line-height:1.6;border-left:4px solid #8c2323;padding:18px;background:#101010;display:none}.alert{color:#d34a4a;font-weight:bold}.record-title{color:#fff;font-size:20px;font-weight:bold;letter-spacing:1px}.field-label{color:#aaa;font-weight:bold}.divider{border-top:1px solid #555;margin:22px 0}.analyst-notes{display:none;margin-top:25px;padding:20px;background:#d8d2c1;color:#181818;border:1px solid #777;line-height:1.7}.note-heading{font-weight:bold;font-size:18px;border-bottom:2px solid #222;padding-bottom:8px;margin-bottom:16px}.redacted-line{display:inline-block;background:#111;color:#111;padding:1px 7px;letter-spacing:3px;margin:2px 0}.government-notice{margin-top:25px;padding:18px;border:3px solid #8c2323;background:#161616}.notice-title{color:#d34a4a;font-weight:bold;font-size:18px;letter-spacing:1px}.status-restricted{display:inline-block;color:#d34a4a;border:1px solid #d34a4a;padding:3px 8px;font-weight:bold}.back{margin-top:25px;color:#aaa;cursor:pointer;text-decoration:underline}.footer{text-align:center;color:#666;font-size:12px;margin-top:40px}.password-panel{max-width:560px;margin:20px auto;padding:25px;border:1px solid #777;background:#101010;text-align:center}.password-status{margin-top:12px;min-height:20px}.ball-header{border:1px solid #666;padding:18px;margin-bottom:20px;background:#121212}.ball-header h2{margin:0 0 8px;letter-spacing:2px}.tab-bar{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.tab-button{flex:1;min-width:180px;padding:12px;background:#282828;color:#fff;border:1px solid #777;font-family:"Courier New",monospace;cursor:pointer}.tab-button.active{border-color:#d34a4a;color:#fff;background:#341b1b}.ball-tab{display:none}.ball-tab.active{display:block}.guest-search{width:100%;margin:0 0 15px}.guest-table-wrap{overflow-x:auto;border:1px solid #555}.guest-table{width:100%;border-collapse:collapse;min-width:760px}.guest-table th,.guest-table td{padding:10px;border-bottom:1px solid #444;text-align:left;vertical-align:top}.guest-table th{background:#262626;color:#fff;position:sticky;top:0}.guest-table tr:hover{background:#202020}.status-no-show{color:#d34a4a;font-weight:bold}.directive-card{background:#d7d0bd;color:#171717;padding:28px;border:1px solid #888;line-height:1.65}.directive-card h3{text-align:center;margin:0 0 4px;font-size:22px}.directive-card h4{text-align:center;margin:0 0 24px;font-size:16px;letter-spacing:2px}.directive-card ul{padding-left:25px}.directive-warning{font-weight:bold}.gallery-grid{display:grid;grid-template-columns:1fr;gap:22px}.surveillance-card{border:1px solid #666;background:#0d0d0d;padding:12px}.surveillance-card img{width:100%;display:block;cursor:pointer;border:1px solid #333}.surveillance-caption{padding:12px 4px 2px;color:#bbb;line-height:1.5}.surveillance-caption strong{color:#fff}.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.94);padding:30px;box-sizing:border-box}.modal-content{display:block;max-width:1200px;width:95%;margin:30px auto;border:1px solid #777}.modal-close{position:fixed;right:28px;top:18px;color:#fff;font-size:34px;cursor:pointer}.small-note{color:#777;font-size:12px}.archive-disabled{opacity:.55;cursor:default}@media(max-width:700px){body{padding:8px}.container{padding:18px}.tab-button{min-width:100%}.directive-card{padding:20px}}
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
 <h1>DOSSIER 0920</h1>
-
-<div class="subtitle">
-SECURE RECORDS SYSTEM
-</div>
-
-<div class="classified">
-CLASSIFIED
-</div>
-
-
-<!-- MAIN MENU -->
+<div class="subtitle">SECURE RECORDS SYSTEM</div>
+<div class="classified">CLASSIFIED</div>
 
 <div id="mainMenu">
-
-<p style="text-align:center">
-AUTHORIZED PERSONNEL ONLY
-</p>
-
-<button class="menu-button" onclick="openHotel()">
-HOTEL GUEST REGISTRY
-</button>
-
-<button class="menu-button">
-HISTORICAL INTELLIGENCE ARCHIVES
-</button>
-
-<button class="menu-button" onclick="openLab()">
-LABORATORY ANALYSIS DATABASE
-</button>
-
+<p style="text-align:center">AUTHORIZED PERSONNEL ONLY</p>
+<button class="menu-button" onclick="openHotel()">HOTEL GUEST REGISTRY</button>
+<button class="menu-button archive-disabled" title="Archive module not yet active">HISTORICAL INTELLIGENCE ARCHIVES</button>
+<button class="menu-button" onclick="openLab()">LABORATORY ANALYSIS DATABASE</button>
+<button class="menu-button" onclick="openMasquerade()">MASQUERADE BALL INTELLIGENCE <span class="locked-label">[RESTRICTED]</span></button>
 </div>
-
-
-<!-- HOTEL SECTION -->
 
 <div id="hotelSection" class="section">
-
 <h2>HOTEL GUEST REGISTRY</h2>
-
-<p>
-Search archived guest records by room number.
-</p>
-
-<input
-type="text"
-id="roomNumber"
-placeholder="ENTER ROOM NUMBER">
-
-<br>
-
-<button
-class="search-button"
-onclick="searchHotel()">
-SEARCH RECORDS
-</button>
-
+<p>Search archived guest records by room number.</p>
+<input type="text" id="roomNumber" placeholder="ENTER ROOM NUMBER">
+<br><button class="search-button" onclick="searchHotel()">SEARCH RECORDS</button>
 <div id="hotelResult" class="result"></div>
-
-<div class="back" onclick="goBack()">
-← RETURN TO SECURE RECORDS
+<div class="back" onclick="goBack()">← RETURN TO SECURE RECORDS</div>
 </div>
-
-</div>
-
-
-<!-- LAB SECTION -->
 
 <div id="labSection" class="section">
-
 <h2>LABORATORY ANALYSIS DATABASE</h2>
-
-<p>
-Search Central Laboratory records by sample reference number.
-</p>
-
-<input
-type="text"
-id="sampleNumber"
-placeholder="ENTER SAMPLE REFERENCE">
-
-<br>
-
-<button
-class="search-button"
-onclick="searchLab()">
-SEARCH LAB RECORDS
-</button>
-
+<p>Search Central Laboratory records by sample reference number.</p>
+<input type="text" id="sampleNumber" placeholder="ENTER SAMPLE REFERENCE">
+<br><button class="search-button" onclick="searchLab()">SEARCH LAB RECORDS</button>
 <div id="labResult" class="result"></div>
-
-<div class="back" onclick="goBack()">
-← RETURN TO SECURE RECORDS
+<div class="back" onclick="goBack()">← RETURN TO SECURE RECORDS</div>
 </div>
 
+<div id="masqueradeSection" class="section">
+<div id="masqueradeLogin" class="password-panel">
+<div class="alert">RESTRICTED INTELLIGENCE AREA</div>
+<h2>MASQUERADE BALL INTELLIGENCE</h2>
+<p>Enter operational password to continue.</p>
+<input type="password" id="masqueradePassword" placeholder="ENTER PASSWORD" onkeydown="if(event.key==='Enter'){checkMasqueradePassword()}">
+<br><button class="search-button" onclick="checkMasqueradePassword()">AUTHENTICATE</button>
+<div id="masqueradePasswordStatus" class="password-status"></div>
 </div>
 
-
-<div class="footer">
-PARIS FIELD OPERATIONS<br>
-SECURITY LEVEL 7
+<div id="masqueradeContent" style="display:none">
+<div class="ball-header">
+<h2>MASQUERADE BALL INTELLIGENCE</h2>
+<div class="alert">PALAIS GARNIER — ACTIVE OPERATION</div>
+<div class="small-note">ACCESS GRANTED // DOSSIER 0920</div>
 </div>
 
+<div class="tab-bar">
+<button id="guestTabButton" class="tab-button active" onclick="showBallTab('guestListTab',this)">GUEST LIST</button>
+<button class="tab-button" onclick="showBallTab('directiveTab',this)">OPERATIONAL DIRECTIVE</button>
+<button class="tab-button" onclick="showBallTab('surveillanceTab',this)">SURVEILLANCE GALLERY</button>
 </div>
 
+<div id="guestListTab" class="ball-tab active">
+<h3>SECURE DIGITAL GUEST REGISTRY</h3>
+<p>Search confirmed admissions, sponsor credentials, and event records.</p>
+<input class="guest-search" type="text" id="guestSearch" placeholder="SEARCH NAME, AFFILIATION, STATUS, OR NOTE" oninput="filterGuests()">
+<div class="guest-table-wrap">
+<table class="guest-table" id="guestTable">
+<thead><tr><th>Guest / Credential</th><th>Affiliation</th><th>Status</th><th>Admission / Notes</th></tr></thead>
+<tbody>
+<tr><td>Natalia Sokolova</td><td>Bolshoi Theatre / Principal Ballerina</td><td>Admitted</td><td>19:42</td></tr>
+<tr><td>Irina Mikhailova</td><td>Bolshoi Theatre / Principal Ballerina</td><td>Admitted</td><td>19:45</td></tr>
+<tr><td>Elena Voronina</td><td>Bolshoi Theatre / Ballet Company</td><td>Admitted</td><td>19:47</td></tr>
+<tr><td>Pavel Orlov</td><td>Bolshoi Cultural Delegation</td><td>Admitted</td><td>19:51</td></tr>
+<tr><td>Marc Desrosiers</td><td>Paris Opera Board / Patron</td><td>Admitted</td><td>19:54</td></tr>
+<tr><td>Henri Aubert</td><td>Ministry of Culture</td><td>Admitted</td><td>19:58</td></tr>
+<tr><td>Laurent Vassier</td><td>Ministry of Foreign Affairs</td><td>Admitted</td><td>20:01</td></tr>
+<tr><td>Camille Renard</td><td>French Government / Official Guest</td><td>Admitted</td><td>20:03</td></tr>
+<tr><td>René Boucher</td><td>Press / Cultural Correspondent</td><td>Admitted</td><td>20:05</td></tr>
+<tr><td>Sergei Antonov</td><td>Cultural Affairs / Diplomatic Guest</td><td>Admitted</td><td>20:07</td></tr>
+<tr><td>Aleksandr Petrov</td><td>Soviet Embassy / Cultural Delegation</td><td>Admitted</td><td>20:09</td></tr>
+<tr><td>Lucien Armand</td><td>Art Dealer / Private Collections</td><td>Admitted</td><td>20:11 — Sponsor credentials also claimed</td></tr>
+<tr><td>Mikhail Serebryakov</td><td>State Arts Committee / Guest</td><td>Admitted</td><td>20:12</td></tr>
+<tr><td>Élodie Marchand</td><td>Musée du Louvre / Conservation Office</td><td>Admitted</td><td>20:14</td></tr>
+<tr><td>Madame Céleste Vernet</td><td>Private Patron</td><td>Admitted</td><td>20:17</td></tr>
+<tr><td>Henri Bellamy</td><td>Bellamy &amp; Fils Shipping</td><td>Admitted</td><td>20:18</td></tr>
+<tr><td>Colette Varenne</td><td>Collector / Private Patron</td><td>Admitted</td><td>20:21</td></tr>
+<tr><td>Julien Caron</td><td>Caron Diplomatic Transport</td><td>Admitted</td><td>20:24</td></tr>
+<tr><td>Jean de Lacroix</td><td>Private Guest</td><td>Admitted</td><td>20:26</td></tr>
+<tr><td>Antoine Girard</td><td>Museum Representative</td><td>Admitted</td><td>20:28</td></tr>
+<tr><td>T. Ruvain</td><td>Private Foundation / Patron</td><td>Admitted</td><td>20:29</td></tr>
+<tr><td>Isabelle Fournier</td><td>Fondation Saint-Clair</td><td>Admitted</td><td>20:32</td></tr>
+<tr><td>Oleg Markov</td><td>Trade Mission / Cultural Guest</td><td>Admitted</td><td>20:34</td></tr>
+<tr><td>Dr. Claire Delaunay</td><td>Deputy Director, Musée du Louvre</td><td class="status-no-show">CONFIRMED — NO SHOW</td><td>Credential unused</td></tr>
+<tr><td>The Vladimir Kryuchkov Foundation</td><td>Private Cultural Sponsor</td><td>Guest Allocation: 2</td><td>Credentials claimed by Lucien Armand</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="directiveTab" class="ball-tab">
+<div class="directive-card">
+<h3>OPEN INVESTIGATION — PALAIS GARNIER</h3>
+<h4>OPERATIONAL DIRECTIVE</h4>
+<p>Recent intelligence indicates that the forthcoming masquerade gala at the Palais Garnier may be used to facilitate the covert transfer of a high-value object, document, or restricted material.</p>
+<p>The event is being held in honor of visiting star ballerinas of the Bolshoi Theatre, including the principal ballerinas scheduled to appear in the upcoming Bolshoi production of <strong>The Nutcracker</strong>. The official cultural program has attracted diplomats, private patrons, art dealers, museum personnel, foundation representatives, and foreign guests.</p>
+<p>Several confirmed attendees maintain known or suspected connections to foreign intelligence, diplomatic channels, private collections, and international transport networks.</p>
+<p>At this time:</p>
+<ul>
+<li>the nature of the item to be transferred is unknown;</li>
+<li>the intended recipient has not been identified;</li>
+<li>the method of transfer remains unclear;</li>
+<li>no criminal act has yet been confirmed.</li>
+</ul>
+<p>Because the event is masked, positive visual identification may be unreliable. All available surveillance imagery should be compared against the secure digital guest registry, sponsor credentials, and admission records.</p>
+<p class="directive-warning">Agents are instructed to observe, document, and identify all unusual contacts or handoffs.</p>
+<p class="directive-warning">Do not assume that legitimate admission indicates legitimate purpose.</p>
+</div>
+</div>
+
+<div id="surveillanceTab" class="ball-tab">
+<h3>SURVEILLANCE GALLERY</h3>
+<p>Recovered images associated with Palais Garnier event monitoring. Click any image to enlarge.</p>
+<div class="gallery-grid">
+<div class="surveillance-card">
+<img src="masquerade-contact-sheet.png" alt="Palais Garnier surveillance contact sheet" onclick="openImageModal(this.src)">
+<div class="surveillance-caption"><strong>REEL 0920 — MULTI-CAMERA CONTACT SHEET</strong><br>Multiple contacts observed during the gala. Identities pending comparison with admission records and sponsor credentials.</div>
+</div>
+<div class="surveillance-card">
+<img src="masquerade-cam07.png" alt="CAM 07 surveillance image showing possible handoff" onclick="openImageModal(this.src)">
+<div class="surveillance-caption"><strong>CAM 07 — POSSIBLE HANDOFF</strong><br>Masked male observed exchanging an envelope or card with an unidentified masked woman. Positive identification not confirmed.</div>
+</div>
+</div>
+</div>
+
+<div class="back" onclick="goBack()">← RETURN TO SECURE RECORDS</div>
+</div>
+</div>
+
+<div class="footer">PARIS FIELD OPERATIONS<br>SECURITY LEVEL 7</div>
+</div>
+
+<div id="imageModal" class="modal" onclick="closeImageModal()"><span class="modal-close">&times;</span><img id="modalImage" class="modal-content" alt="Expanded surveillance image"></div>
 
 <script>
+let masqueradeUnlocked=false;
+function hideAllSections(){document.getElementById('hotelSection').style.display='none';document.getElementById('labSection').style.display='none';document.getElementById('masqueradeSection').style.display='none'}
+function openHotel(){document.getElementById('mainMenu').style.display='none';hideAllSections();document.getElementById('hotelSection').style.display='block'}
+function openLab(){document.getElementById('mainMenu').style.display='none';hideAllSections();document.getElementById('labSection').style.display='block'}
+function openMasquerade(){document.getElementById('mainMenu').style.display='none';hideAllSections();document.getElementById('masqueradeSection').style.display='block';if(masqueradeUnlocked){document.getElementById('masqueradeLogin').style.display='none';document.getElementById('masqueradeContent').style.display='block'}else{document.getElementById('masqueradeLogin').style.display='block';document.getElementById('masqueradeContent').style.display='none';setTimeout(()=>document.getElementById('masqueradePassword').focus(),50)}}
+function goBack(){document.getElementById('mainMenu').style.display='block';hideAllSections();document.getElementById('hotelResult').style.display='none';document.getElementById('labResult').style.display='none';document.getElementById('roomNumber').value='';document.getElementById('sampleNumber').value=''}
+function checkMasqueradePassword(){const p=document.getElementById('masqueradePassword').value.trim();const status=document.getElementById('masqueradePasswordStatus');if(p==='FOX'){masqueradeUnlocked=true;status.innerHTML='<span style="color:#8fbf8f;font-weight:bold">ACCESS GRANTED</span>';setTimeout(()=>{document.getElementById('masqueradeLogin').style.display='none';document.getElementById('masqueradeContent').style.display='block'},350)}else{status.innerHTML='<span class="alert">ACCESS DENIED — INVALID PASSWORD</span>';document.getElementById('masqueradePassword').value=''}}
+function showBallTab(tabId,button){document.querySelectorAll('.ball-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('active'));document.getElementById(tabId).classList.add('active');button.classList.add('active')}
+function filterGuests(){const q=document.getElementById('guestSearch').value.toLowerCase();document.querySelectorAll('#guestTable tbody tr').forEach(row=>{row.style.display=row.innerText.toLowerCase().includes(q)?'':'none'})}
+function openImageModal(src){document.getElementById('modalImage').src=src;document.getElementById('imageModal').style.display='block'}
+function closeImageModal(){document.getElementById('imageModal').style.display='none'}
 
-
-// --------------------
-// NAVIGATION
-// --------------------
-
-function openHotel() {
-
-    document.getElementById("mainMenu").style.display = "none";
-    document.getElementById("hotelSection").style.display = "block";
-    document.getElementById("labSection").style.display = "none";
-
+function searchHotel(){
+let room=document.getElementById('roomNumber').value.trim();let result=document.getElementById('hotelResult');result.style.display='block';
+if(room==='323'){result.innerHTML=`<div class="alert">SECURITY REVIEW — FLAGGED RECORD</div><br><div class="record-title">ROOM 323</div><br><strong>REGISTERED GUEST:</strong> V. Beaumont<br><strong>RESIDENCE:</strong> Paris, France<br><br><strong>VISITOR LOG:</strong><br>Sergei Antonov<br>Arrival: 10:14 PM<br>Departure: 11:06 PM<br><br>Visitor admitted at guest's request.<br><br><strong>INTERNAL NOTE:</strong><br>Guest requested that no telephone calls be connected to the room during the visit.<br><br>Visitor entry was recorded manually by the night desk.<br><br><span class="alert">ASSOCIATED VISITOR LATER FLAGGED IN INTELLIGENCE RECORDS.</span>`}
+else if(room==='920'){result.innerHTML=`<div class="record-title">ROOM 920</div><br><strong>REGISTERED GUEST:</strong> C. Dorsey<br><strong>STATUS:</strong> VIP GUEST<br><br><strong>INTERNAL NOTE:</strong><br>Special authorization granted.<br><br>Clearance level: <strong>7</strong><br><br><span class="alert">LICENSED FOR LEVEL 7 ACCESS</span>`}
+else if(room==='092'){result.innerHTML=`<div class="alert">ARCHIVE ANOMALY DETECTED</div><br><div class="record-title">ROOM 092</div><br>Room number not recognized as a valid guest room.<br><br><strong>CROSS-REFERENCE:</strong> DOSSIER 0920<br><strong>REQUIRED CLEARANCE:</strong> AGENT 007<br><br><span class="alert">FURTHER INFORMATION CLASSIFIED</span>`}
+else{const rooms={'602':['VACANT','Room held for maintenance.'],'605':['Claire Duvall — Lyon, France','No security flags.'],'607':['Henry Whitmore — London, England','Guest requested early departure at 6:15 AM. No security flags.'],'609':['Paul Fournier — Marseille, France','Reservation canceled prior to arrival.'],'611':['ARCHIVE STATUS: INCOMPLETE','Passport photocopy missing from archived registration materials. No additional irregularities recorded.'],'616':['VACANT',''],'618':['Jacques Moreau — Nice, France','Guest requested that no telephone calls be connected directly to the room. No security flags.'],'621':['Elizabeth Harcourt — New York, USA','No security flags.'],'624':['RECORD UNAVAILABLE','Original registration materials damaged during archival transfer.'],'627':['André Laurent — Geneva, Switzerland','Guest settled entire account in cash at departure. No security flags.'],'631':['VACANT','']};if(rooms[room]){result.innerHTML=`<div class="record-title">ROOM ${room}</div><br><strong>${rooms[room][0]}</strong><br><br>${rooms[room][1]}`}else{result.innerHTML=`<span class="alert">NO MATCHING ARCHIVED RECORD FOUND</span><br><br>Verify the room number and search again.`}}
 }
 
-
-function openLab() {
-
-    document.getElementById("mainMenu").style.display = "none";
-    document.getElementById("hotelSection").style.display = "none";
-    document.getElementById("labSection").style.display = "block";
-
-}
-
-
-function goBack() {
-
-    document.getElementById("mainMenu").style.display = "block";
-
-    document.getElementById("hotelSection").style.display = "none";
-    document.getElementById("labSection").style.display = "none";
-
-    document.getElementById("hotelResult").style.display = "none";
-    document.getElementById("labResult").style.display = "none";
-
-    document.getElementById("roomNumber").value = "";
-    document.getElementById("sampleNumber").value = "";
-
-}
-
-
-
-// --------------------
-// HOTEL DATABASE
-// --------------------
-
-function searchHotel() {
-
-    let room =
-    document.getElementById("roomNumber").value.trim();
-
-    let result =
-    document.getElementById("hotelResult");
-
-    result.style.display = "block";
-
-
-    if (room === "323") {
-
-        result.innerHTML = `
-
-        <div class="alert">
-        SECURITY REVIEW — FLAGGED RECORD
-        </div>
-
-        <br>
-
-        <div class="record-title">
-        ROOM 323
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        V. Beaumont
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        Paris, France
-
-        <br><br>
-
-        <strong>VISITOR LOG:</strong>
-
-        <br>
-
-        Sergei Antonov
-
-        <br>
-
-        Arrival: 10:14 PM
-
-        <br>
-
-        Departure: 11:06 PM
-
-        <br><br>
-
-        Visitor admitted at guest's request.
-
-        <br><br>
-
-        <strong>INTERNAL NOTE:</strong>
-
-        <br>
-
-        Guest requested that no telephone calls
-        be connected to the room during the visit.
-
-        <br><br>
-
-        Visitor entry was recorded manually
-        by the night desk.
-
-        <br><br>
-
-        <span class="alert">
-        ASSOCIATED VISITOR LATER FLAGGED
-        IN INTELLIGENCE RECORDS.
-        </span>
-
-        `;
-
-    }
-
-
-    else if (room === "920") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 920
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        C. Dorsey
-
-        <br>
-
-        <strong>STATUS:</strong>
-        VIP GUEST
-
-        <br><br>
-
-        <strong>INTERNAL NOTE:</strong>
-
-        <br>
-
-        Special authorization granted.
-
-        <br><br>
-
-        Clearance level:
-        <strong>7</strong>
-
-        <br><br>
-
-        <span class="alert">
-        LICENSED FOR LEVEL 7 ACCESS
-        </span>
-
-        `;
-
-    }
-
-
-    else if (room === "092") {
-
-        result.innerHTML = `
-
-        <div class="alert">
-        ARCHIVE ANOMALY DETECTED
-        </div>
-
-        <br>
-
-        <div class="record-title">
-        ROOM 092
-        </div>
-
-        <br>
-
-        Room number not recognized
-        as a valid guest room.
-
-        <br><br>
-
-        <strong>CROSS-REFERENCE:</strong>
-        DOSSIER 0920
-
-        <br>
-
-        <strong>REQUIRED CLEARANCE:</strong>
-        AGENT 007
-
-        <br><br>
-
-        <span class="alert">
-        FURTHER INFORMATION CLASSIFIED
-        </span>
-
-        `;
-
-    }
-
-
-    else if (room === "602") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 602
-        </div>
-
-        <br>
-
-        <strong>STATUS:</strong>
-        VACANT
-
-        <br><br>
-
-        Room held for maintenance.
-
-        `;
-
-    }
-
-
-    else if (room === "605") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 605
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        Claire Duvall
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        Lyon, France
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        No security flags.
-
-        `;
-
-    }
-
-
-    else if (room === "607") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 607
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        Henry Whitmore
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        London, England
-
-        <br><br>
-
-        Guest requested early departure
-        at 6:15 AM.
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        No security flags.
-
-        `;
-
-    }
-
-
-    else if (room === "609") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 609
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        Paul Fournier
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        Marseille, France
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        Reservation canceled prior to arrival.
-
-        `;
-
-    }
-
-
-    else if (room === "611") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 611
-        </div>
-
-        <br>
-
-        <strong>ARCHIVE STATUS:</strong>
-        INCOMPLETE
-
-        <br><br>
-
-        Passport photocopy missing
-        from archived registration materials.
-
-        <br><br>
-
-        No additional irregularities recorded.
-
-        `;
-
-    }
-
-
-    else if (room === "616") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 616
-        </div>
-
-        <br>
-
-        <strong>STATUS:</strong>
-        VACANT
-
-        `;
-
-    }
-
-
-    else if (room === "618") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 618
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        Jacques Moreau
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        Nice, France
-
-        <br><br>
-
-        <strong>GUEST REQUEST:</strong>
-
-        <br>
-
-        No telephone calls were to be
-        connected directly to the room.
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        No security flags.
-
-        `;
-
-    }
-
-
-    else if (room === "621") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 621
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        Elizabeth Harcourt
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        New York, USA
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        No security flags.
-
-        `;
-
-    }
-
-
-    else if (room === "624") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 624
-        </div>
-
-        <br>
-
-        <strong>ARCHIVE STATUS:</strong>
-
-        <br>
-
-        RECORD UNAVAILABLE
-
-        <br><br>
-
-        Original registration materials
-        damaged during archival transfer.
-
-        `;
-
-    }
-
-
-    else if (room === "627") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 627
-        </div>
-
-        <br>
-
-        <strong>REGISTERED GUEST:</strong>
-        André Laurent
-
-        <br>
-
-        <strong>RESIDENCE:</strong>
-        Geneva, Switzerland
-
-        <br><br>
-
-        Guest settled entire account
-        in cash at departure.
-
-        <br><br>
-
-        <strong>STATUS:</strong>
-        No security flags.
-
-        `;
-
-    }
-
-
-    else if (room === "631") {
-
-        result.innerHTML = `
-
-        <div class="record-title">
-        ROOM 631
-        </div>
-
-        <br>
-
-        <strong>STATUS:</strong>
-        VACANT
-
-        `;
-
-    }
-
-
-    else {
-
-        result.innerHTML = `
-
-        <span class="alert">
-        NO MATCHING ARCHIVED RECORD FOUND
-        </span>
-
-        <br><br>
-
-        Verify the room number
-        and search again.
-
-        `;
-
-    }
-
-}
-
-
-
-// --------------------
-// LAB DATABASE
-// --------------------
-
-function searchLab() {
-
-    let sample =
-    document.getElementById("sampleNumber").value.trim();
-
-    let result =
-    document.getElementById("labResult");
-
-    result.style.display = "block";
-
-
-    if (sample === "731") {
-
-        result.innerHTML = `
-
-        <div class="alert">
-        RESTRICTED LABORATORY RECORD
-        </div>
-
-        <br>
-
-        <div class="record-title">
-        SAMPLE 731
-        </div>
-
-        <br>
-
-        <span class="field-label">OBJECT:</span>
-        La Joconde (Mona Lisa)
-
-        <br>
-
-        <span class="field-label">SAMPLE TYPE:</span>
-        Paint Fragment
-
-        <br>
-
-        <span class="field-label">ANALYST:</span>
-        Daniel Mercer
-
-        <br>
-
-        <span class="field-label">COLLECTION AUTHORIZATION:</span>
-        <span class="alert">NOT ON FILE</span>
-
-        <br>
-
-        <span class="field-label">CHAIN OF CUSTODY:</span>
-        INCOMPLETE
-
-        <br>
-
-        <span class="field-label">CURRENT STATUS:</span>
-        <span class="status-restricted">RESTRICTED</span>
-
-        <div class="divider"></div>
-
-        <strong>PRELIMINARY FINDINGS</strong>
-
-        <br><br>
-
-        Pigment composition is broadly consistent
-        with historic materials associated with
-        Renaissance-era paintings.
-
-        <br><br>
-
-        Microscopic examination revealed an underlying
-        preparation layer that does not match the Louvre's
-        archived conservation profile for La Joconde.
-
-        <br><br>
-
-        <span class="alert">
-        COMPARATIVE ANOMALY DETECTED
-        </span>
-
-        <br><br>
-
-        Additional testing recommended.
-
-        <br><br>
-
-        Authenticity cannot be confirmed
-        from this sample alone.
-
-        <div class="divider"></div>
-
-        <strong>SAMPLE ORIGIN:</strong>
-
-        <br><br>
-
-        Sample 731 does not appear on the authorized
-        conservation collection schedule.
-
-        <br><br>
-
-        Original collection authorization
-        could not be located.
-
-        <br>
-
-        <button class="notes-button"
-        onclick="showLabNotes()">
-        VIEW ANALYST NOTES
-        </button>
-
-
-        <div id="analystNotes" class="analyst-notes">
-
-            <div class="note-heading">
-            ANALYST NOTES — D. MERCER
-            </div>
-
-            Sample 731 was not listed on the
-            authorized conservation schedule.
-
-            <br><br>
-
-            The fragment was delivered separately
-            from the standard laboratory chain
-            of custody.
-
-            <br><br>
-
-            Initial microscopy suggests the lower
-            preparation layer is materially inconsistent
-            with the Louvre reference samples currently
-            held on file.
-
-            <br><br>
-
-            I requested access to earlier conservation
-            photography and cross-section records.
-
-            <br><br>
-
-            <span class="redacted-line">
-            REDACTED REDACTED REDACTED
-            </span>
-
-            <br>
-
-            <span class="redacted-line">
-            REDACTED REDACTED REDACTED REDACTED
-            </span>
-
-            <br><br>
-
-            Comparison with prior imaging indicates
-
-            <span class="redacted-line">
-            REDACTED REDACTED
-            </span>
-
-            replacement may have occurred before
-
-            <span class="redacted-line">
-            REDACTED REDACTED
-            </span>
-
-            .
-
-            <br><br>
-
-            On August 14, I was instructed not
-            to repeat the comparison and not to
-            circulate preliminary findings outside
-            the laboratory.
-
-            <br><br>
-
-            <span class="redacted-line">
-            REDACTED REDACTED REDACTED
-            </span>
-
-            <br><br>
-
-            Instruction specifically states:
-
-            <br><br>
-
-            <strong>
-            DO NOT TRANSMIT TO AMERICAN LIAISON.
-            </strong>
-
-            <br><br>
-
-            I asked who authorized the restriction.
-
-            <br><br>
-
-            No name was provided.
-
-            <br><br>
-
-            The sample has since been reclassified
-            from CONSERVATION MATERIAL to
-            RESTRICTED STATE RECORD.
-
-            <br><br>
-
-            I do not understand why a museum
-            paint sample is being handled
-            as an intelligence matter.
-
-
-            <div class="government-notice">
-
-                <div class="notice-title">
-                FRENCH GOVERNMENT ACCESS CONTROL NOTICE
-                </div>
-
-                <br>
-
-                All records associated with Sample 731
-                have been placed under restricted
-                circulation by government directive.
-
-                <br><br>
-
-                Unauthorized disclosure is prohibited.
-
-                <br><br>
-
-                <strong>REASON FOR RESTRICTION:</strong>
-
-                <br>
-
-                <span class="redacted-line">
-                REDACTED REDACTED REDACTED
-                </span>
-
-                <br><br>
-
-                <strong>AUTHORIZING OFFICE:</strong>
-
-                <br>
-
-                <span class="redacted-line">
-                REDACTED REDACTED
-                </span>
-
-                <br><br>
-
-                <strong>DISTRIBUTION:</strong>
-                LIMITED
-
-                <br>
-
-                <strong>EXTERNAL RELEASE:</strong>
-                DENIED
-
-            </div>
-
-        </div>
-
-        `;
-
-    }
-
-
-    else {
-
-        result.innerHTML = `
-
-        <span class="alert">
-        NO MATCHING LABORATORY RECORD FOUND
-        </span>
-
-        <br><br>
-
-        Verify the sample reference
-        and search again.
-
-        `;
-
-    }
-
-}
-
-
-
-function showLabNotes() {
-
-    let notes =
-    document.getElementById("analystNotes");
-
-    let button =
-    event.target;
-
-    if (notes.style.display === "block") {
-
-        notes.style.display = "none";
-        button.innerHTML = "VIEW ANALYST NOTES";
-
-    }
-
-    else {
-
-        notes.style.display = "block";
-        button.innerHTML = "CLOSE ANALYST NOTES";
-
-    }
-
-}
-
+function searchLab(){let sample=document.getElementById('sampleNumber').value.trim();let result=document.getElementById('labResult');result.style.display='block';if(sample==='731'){result.innerHTML=`<div class="alert">RESTRICTED LABORATORY RECORD</div><br><div class="record-title">SAMPLE 731</div><br><span class="field-label">OBJECT:</span> La Joconde (Mona Lisa)<br><span class="field-label">SAMPLE TYPE:</span> Paint Fragment<br><span class="field-label">ANALYST:</span> Daniel Mercer<br><span class="field-label">COLLECTION AUTHORIZATION:</span> <span class="alert">NOT ON FILE</span><br><span class="field-label">CHAIN OF CUSTODY:</span> INCOMPLETE<br><span class="field-label">CURRENT STATUS:</span> <span class="status-restricted">RESTRICTED</span><div class="divider"></div><strong>PRELIMINARY FINDINGS</strong><br><br>Pigment composition is broadly consistent with historic materials associated with Renaissance-era paintings.<br><br>Microscopic examination revealed an underlying preparation layer that does not match the Louvre's archived conservation profile for La Joconde.<br><br><span class="alert">COMPARATIVE ANOMALY DETECTED</span><br><br>Additional testing recommended.<br><br>Authenticity cannot be confirmed from this sample alone.<div class="divider"></div><strong>SAMPLE ORIGIN:</strong><br><br>Sample 731 does not appear on the authorized conservation collection schedule.<br><br>Original collection authorization could not be located.<br><button class="notes-button" onclick="showLabNotes(event)">VIEW ANALYST NOTES</button><div id="analystNotes" class="analyst-notes"><div class="note-heading">ANALYST NOTES — D. MERCER</div>Sample 731 was not listed on the authorized conservation schedule.<br><br>The fragment was delivered separately from the standard laboratory chain of custody.<br><br>Initial microscopy suggests the lower preparation layer is materially inconsistent with the Louvre reference samples currently held on file.<br><br>I requested access to earlier conservation photography and cross-section records.<br><br><span class="redacted-line">REDACTED REDACTED REDACTED</span><br><span class="redacted-line">REDACTED REDACTED REDACTED REDACTED</span><br><br>Comparison with prior imaging indicates <span class="redacted-line">REDACTED REDACTED</span> replacement may have occurred before <span class="redacted-line">REDACTED REDACTED</span>.<br><br>On August 14, I was instructed not to repeat the comparison and not to circulate preliminary findings outside the laboratory.<br><br><span class="redacted-line">REDACTED REDACTED REDACTED</span><br><br>Instruction specifically states:<br><br><strong>DO NOT TRANSMIT TO AMERICAN LIAISON.</strong><br><br>I asked who authorized the restriction.<br><br>No name was provided.<br><br>The sample has since been reclassified from CONSERVATION MATERIAL to RESTRICTED STATE RECORD.<br><br>I do not understand why a museum paint sample is being handled as an intelligence matter.<div class="government-notice"><div class="notice-title">FRENCH GOVERNMENT ACCESS CONTROL NOTICE</div><br>All records associated with Sample 731 have been placed under restricted circulation by government directive.<br><br>Unauthorized disclosure is prohibited.<br><br><strong>REASON FOR RESTRICTION:</strong><br><span class="redacted-line">REDACTED REDACTED REDACTED</span><br><br><strong>AUTHORIZING OFFICE:</strong><br><span class="redacted-line">REDACTED REDACTED</span><br><br><strong>DISTRIBUTION:</strong> LIMITED<br><strong>EXTERNAL RELEASE:</strong> DENIED</div></div>`}else{result.innerHTML=`<span class="alert">NO MATCHING LABORATORY RECORD FOUND</span><br><br>Verify the sample reference and search again.`}}
+function showLabNotes(evt){let notes=document.getElementById('analystNotes');let button=evt.currentTarget;if(notes.style.display==='block'){notes.style.display='none';button.innerHTML='VIEW ANALYST NOTES'}else{notes.style.display='block';button.innerHTML='CLOSE ANALYST NOTES'}}
 </script>
-
 </body>
 </html>
